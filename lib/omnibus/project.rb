@@ -64,6 +64,7 @@ module Omnibus
       @description = nil
       @replaces = nil
       @mac_pkg_identifier = nil
+      @overrides = { }
 
       @exclusions = Array.new
       @conflicts = Array.new
@@ -256,6 +257,16 @@ module Omnibus
     def package_user(val=NULL_ARG)
       @pkg_user = val unless val.equal?(NULL_ARG)
       @pkg_user
+    end
+
+    def overrides(val=NULL_ARG)
+      @overrides = val unless val.equal?(NULL_ARG)
+      @overrides
+    end
+
+    def override(name, val=NULL_ARG)
+      @overrides[name] = val unless val.equal?(NULL_ARG)
+      @overrides[name]
     end
 
     # Set or retrieve the {deb/rpm/solaris}-group fpm argument.
